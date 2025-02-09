@@ -1,3 +1,5 @@
+/// <reference types="vitest" />
+
 import {defineConfig} from 'vite'
 import react from '@vitejs/plugin-react'
 import reactControlStatements from 'vite-plugin-react-control-statements'
@@ -10,4 +12,9 @@ export default defineConfig({
 		reactControlStatements(),
 		Inspect()
 	],
+
+	test: {
+		globals: true,
+		environment: "jsdom"
+	}
 })
