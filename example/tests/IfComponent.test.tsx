@@ -17,15 +17,15 @@ describe('If component', () => {
 		expect(screen.getByText(matcher)).toBeTruthy();
 	});
 
-	// test("directly returns an If component ", async () => {
-	// 	render(<TestWrapper TestComponent={ReturnIf}/>);
-	// 	expect(screen.queryAllByText(matcher)).toHaveLength(0);
-	//
-	// 	const toggle = screen.getByRole('button');
-	// 	await userEvent.click(toggle);
-	// 	expect(screen.getByText(matcher)).toBeTruthy();
-	// })
-	//
+	test("directly returns an If component ", async () => {
+		render(<TestWrapper TestComponent={ReturnIf}/>);
+		expect(screen.queryAllByText(matcher)).toHaveLength(0);
+
+		const toggle = screen.getByRole('button');
+		await userEvent.click(toggle);
+		expect(screen.getByText(matcher)).toBeTruthy();
+	})
+
 	// test("nested use", async () => {
 	// 	render(<TestWrapper TestComponent={NestedUse}/>);
 	// 	expect(screen.queryAllByText(matcher)).toHaveLength(0);
@@ -63,13 +63,13 @@ const BasicUse = ({condition}: { condition: boolean }) => {
 	)
 }
 
-// const ReturnIf = ({condition}: { condition: boolean }) => {
-// 	return (
-// 			<If condition={condition}>
-// 				{matcher}
-// 			</If>
-// 	)
-// }
+const ReturnIf = ({condition}: { condition: boolean }) => {
+	return (
+			<If condition={condition}>
+				{matcher}
+			</If>
+	)
+}
 
 // const NestedUse = ({condition}: { condition: boolean }) => {
 // 	return (
