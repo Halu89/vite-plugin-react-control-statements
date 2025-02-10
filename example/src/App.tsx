@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { If, Choose, Otherwise, When } from "vite-plugin-react-control-statements";
+import {NestedUse} from "./NestedUse.tsx";
+import React from "react";
 
 function App() {
 	const [ifTestValue, setIfTestValue] = useState(false);
@@ -23,9 +25,13 @@ function App() {
 
 					{/* If condition result */}
 					<If condition={ifTestValue}>
+						<>
 						<span style={{marginLeft: '10px'}}></span>
 						<span>The if condition is true.</span>
+						</>
 					</If>
+
+					<NestedUse condition={ifTestValue} />
 				</div>
 
 				{/* Divider */}

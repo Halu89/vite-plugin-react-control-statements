@@ -34,6 +34,27 @@ describe('If component', () => {
 	// 	await userEvent.click(toggle);
 	// 	expect(screen.getByText(matcher)).toBeTruthy();
 	// })
+
+	// test("condition match regex", async () => {
+	// 	render(<ConditionMatchRegex/>);
+	// 	expect(screen.getByText(matcher)).toBeTruthy();
+	// });
+
+	test("JSX in variable", async () => {
+		render(<TestWrapper TestComponent={JSXInVariable}/>);
+		expect(screen.queryAllByText(matcher)).toHaveLength(0);
+
+		const toggle = screen.getByRole('button');
+		await userEvent.click(toggle);
+		expect(screen.getByText(matcher)).toBeTruthy();
+	});
+
+	test("JSX in string", async () => {
+		render(<JSXInString/>);
+		expect(screen.getByText("If")).toBeTruthy();
+	});
+
+
 });
 
 const TestWrapper = ({TestComponent}: { TestComponent: FunctionComponent<{ condition: boolean }> }) => {
@@ -82,6 +103,7 @@ const ReturnIf = ({condition}: { condition: boolean }) => {
 // 			</>
 // 	)
 // }
+
 //
 // const InArray = ({condition}: { condition: boolean }) => {
 // 	return (<>
@@ -95,3 +117,37 @@ const ReturnIf = ({condition}: { condition: boolean }) => {
 // 		}</>)
 // }
 //
+
+// const ConditionMatchRegex = () => {
+// 	return (
+// 			<>
+// 				<If condition={"}>".length > 2}>
+// 					{matcher}
+// 				</If>
+// 			</>
+// 	)
+// }
+
+const JSXInVariable = ({condition}: { condition: boolean }) => {
+	const jsx = <If condition={condition}>
+		{matcher}
+	</If>;
+
+	return (
+			<>
+				{jsx}
+			</>
+	)
+}
+
+const JSXInString = () => {
+	const jsx = `<If condition={true}>
+		{matcher}
+	</If>`;
+
+	return (
+			<>
+				{jsx}
+			</>
+	)
+}
