@@ -50,9 +50,9 @@ jobs:
                   registry-url: 'https://registry.npmjs.org'
                   cache: "pnpm"
 
-            - run: pnpm install --frozen-lockfile --filter ./package
+            - run: cd package && pnpm install --frozen-lockfile
 
-            - run: pnpm --filter ./package run build
+            - run: cd package && pnpm run build
 
             - run: cd package && npm publish --access public
               env:
