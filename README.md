@@ -123,11 +123,17 @@ Here are some examples of what the Vite plugin does to your code.
 
 ---
 
+### Disclaimer - Active Issues
+- Currently, the plugin uses regex to transform the code. This is not a perfect solution and will not work for all cases. You can see the failing test cases in the example test file (example/tests/IfComponent.test.tsx)
+- A possible solution is to switch to using an actual JSX parser rather than regex in the plugin
+
+---
+
 ### Development
 How to work on this project.
 - Run `pnpm install` to install dependencies
 - Edit the plugin in `package/src/plugin.ts` to make changes
-- Run `pnpm build` to build the plugin
+- Run `pnpm build` in the `package` folder to build the plugin
 - Run `pnpm run dev` in the `example` folder to test the plugin
 - Navigate to http://localhost:5173/__inspect to check the plugin transformation step (uses [vite-plugin-inspect](https://github.com/antfu-collective/vite-plugin-inspect))
 

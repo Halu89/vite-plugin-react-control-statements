@@ -36,6 +36,9 @@ describe('If component', () => {
 		expect(screen.getByText(matcher)).toBeTruthy();
 	});
 
+	// --------------------------------------------------------------------------------
+	// These tests are expected to fail because they do not compile to valid JSX.
+	// Possible solution is to use an actual JSX parser rather than using a simple regex in the plugin.
 	test.skip("nested use", async () => {
 		render(<TestWrapper TestComponent={NestedUse}/>);
 		expect(screen.queryAllByText(matcher)).toHaveLength(0);
