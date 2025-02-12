@@ -10,7 +10,7 @@ function removeJSXComments(code: string): string {
 function transformIf(code: string) {
 	const ifRegex = /<If\s+condition=\{(.+?)}\s*>([\s\S]*?)<\/If>/g;
 	return code.replace(ifRegex, (match, condition, content) => {
-		return `{${condition} ? (<>${content}</>) : null}`;
+		return `<>{${condition} ? (<>${content}</>) : null}</>`;
 	});
 }
 
